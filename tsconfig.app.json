@@ -1,37 +1,46 @@
 {
 	"compilerOptions": {
-		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-		"target": "ES2022",
-		"useDefineForClassFields": true,
-		"lib": [
+		// ⚙️ Output и кеш
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo", // Кеш компиляции для ускорения
+		"noEmit": true, // Не выводить JS-файлы (только типизация)
+		"noEmitOnError": true, // Не компилировать, если есть ошибки
+		// 🎯 Цель и модули
+		"target": "ES2022", // Целевая версия JS
+		"module": "ESNext", // Система модулей
+		"moduleResolution": "node", // Разрешение модулей по правилам Node.js
+		"lib": [ // Библиотеки, которые подключаются автоматически
 			"ES2022",
 			"DOM",
 			"DOM.Iterable"
 		],
-		"module": "ESNext",
-		"skipLibCheck": true,
-		/* Bundler mode */
-		"moduleResolution": "bundler",
-		"allowImportingTsExtensions": true,
-		"verbatimModuleSyntax": true,
-		"moduleDetection": "force",
-		"noEmit": true,
-		"jsx": "react-jsx",
-		/* Linting */
-		"strict": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"erasableSyntaxOnly": true,
-		"noFallthroughCasesInSwitch": true,
-		"noUncheckedSideEffectImports": true,
-		"baseUrl": ".",
-		"paths": {
+		"jsx": "react-jsx", // Новый JSX-трансформер (React 17+)
+		// 📁 Пути и алиасы
+		"rootDir": "./src", // Корневая папка проекта
+		"baseUrl": ".", // Базовый путь для абсолютных импортов
+		"paths": { // Алиасы
 			"@/*": [
 				"src/*"
 			]
 		},
+		// 📦 Импорты и совместимость
+		"allowImportingTsExtensions": true, // Разрешает импорты с расширениями `.ts`
+		"verbatimModuleSyntax": true, // Сохраняет синтаксис модулей как есть
+		"esModuleInterop": true, // Совместимость с CommonJS
+		"useDefineForClassFields": true, // ES-семантика для полей классов
+		// 🛡️ Проверки и строгий режим
+		"strict": true, // Включает все строгие проверки
+		"forceConsistentCasingInFileNames": true, // Проверка на регистр в путях
+		"noUnusedLocals": true, // Ошибка, если переменная не используется
+		"noUnusedParameters": true, // Ошибка, если параметр функции не используется
+		"noFallthroughCasesInSwitch": true, // Ошибка, если `case` в `switch` падает в следующий
+		"noUncheckedSideEffectImports": true, // Импорты без побочных эффектов — под контроль
+		// 🧹 Прочее
+		"skipLibCheck": true, // Не проверять типы внутри node_modules
+		"erasableSyntaxOnly": true, // Проверка только типов, не кода
+		"allowJs": false, // Не разрешать .js-файлы
+		"removeComments": true // Удалять комментарии при компиляции (если бы была)
 	},
 	"include": [
-		"src"
+		"src" // Файлы для компиляции
 	]
 }
